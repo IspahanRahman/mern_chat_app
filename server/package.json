@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "server":"nodemon indexjs",
-    "frontend":"npm start --prefix frontend",
-    "dev":"concurrently \"npm run server\"\"npm run frontend\""
+    "start": "nodemon index.js"
+    
   },
   "keywords": [],
   "author": "ispahan rahman",
