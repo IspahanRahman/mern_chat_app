@@ -21,6 +21,11 @@ import { registerRoute } from '../utils/APIRoutes'
         draggable:true,
         theme:"dark"
      }
+     useEffect(()=>{
+        if(localStorage.getItem('chat-app-user')){
+          navigate("/")
+        }
+      },[])
      const handlesubmit=async (event)=>{
          event.preventDefault();
          if(handleValidation()){

@@ -1,5 +1,7 @@
 const User=require('../model/userModel')
 const bcrypt=require("bcrypt")
+
+//register controller
 module.exports.register=async(req,res,next)=>{
     try{
         const {username,email,password}=req.body;
@@ -24,4 +26,30 @@ module.exports.register=async(req,res,next)=>{
         console.log(e)
         next(e)
     }
+}
+
+//login controller
+
+module.exports.login=async(req,res,next)=>{
+    try{
+        const {username,password}=req.body;
+        const user=await User.findOne({username})
+        if(!user){
+            return res.json({msg:"Incorrect Username or Pssword",status:false})
+        }
+        const isValidPassword=await bcrypt.compare(password,user.password)
+        if(!isValidPassword){
+            return res.json({msg:"Incorrect Username or Pssword",status:false})
+        }
+        delete user.password;
+        return res.json({status:true,user})
+    }
+    catch(e){
+        console.log(e)
+        next(e)
+    }
+}
+
+module.exports.setAvatar=(req,res,next)=>{
+    
 }
