@@ -22,7 +22,7 @@ import { registerRoute } from '../utils/APIRoutes'
         theme:"dark"
      }
      useEffect(()=>{
-        if(localStorage.getItem('chat-app-user')){
+        if(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)){
           navigate("/")
         }
       },[])
